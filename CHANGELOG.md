@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/zaunchat/term-client/compare/v1.0.3...v1.0.4) (2023-04-20)
+
+
+### Performance Improvements
+
+* update ([cda607e](https://github.com/zaunchat/term-client/commit/cda607e450f48ccc5fa0f983b5af6868cd00a222))
+
 ## [1.0.3](https://github.com/zaunchat/term-client/compare/v1.0.2...v1.0.3) (2023-04-20)
 
 
