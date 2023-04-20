@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Client } from '@zaunapp/client'
 import prompts from 'prompts'
 import * as readline from 'node:readline/promises'
