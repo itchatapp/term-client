@@ -5,7 +5,6 @@ import prompts from 'prompts'
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
-
 const env = process.env
 const exitOnCancel = (state) => {
 	if (state.aborted) process.nextTick(() => process.exit(0))
@@ -27,7 +26,6 @@ const { TOKEN } = await prompts([
 const client = new Client()
 
 client.on('error', console.error)
-// client.on('debug', console.error)
 
 client
 	.login(TOKEN)
@@ -40,15 +38,11 @@ client
 
 const [channel, messages] = await new Promise((resolve) => {
 	client.once('ready', async () => {
-		console.log('client is ready, fetching messages..')
 		const c = client.channels.cache.get('302651066405617665')
 		const messages = await c.messages.fetch()
-		console.log('fatched')
 		resolve([c, messages])
 	})
 })
-
-console.log('size', messages.size)
 
 for (const msg of messages.values()) {
 	console.log(`[${msg.author.id === client.user.id ? 'You' : msg.author.username}]: ${msg.content}`)
@@ -60,7 +54,7 @@ client.on('messageCreate', (msg) => {
 
 while (client.readyAt) {
 	const rl = readline.createInterface({ input, output })
-	const content = await rl.question('Message: ')
+	const content = await rl.question('[You]: ')
 	await channel.send(content)
 	rl.close()
 }
