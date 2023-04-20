@@ -45,6 +45,8 @@ const [channel, messages] = await new Promise((resolve) => {
 	})
 })
 
+const rl = readline.createInterface({ input, output })
+
 for (const msg of messages.values()) {
 	console.log(`[${msg.author.id === client.user.id ? 'You' : msg.author.username}]: ${msg.content}`)
 }
@@ -53,11 +55,8 @@ client.on('messageCreate', (msg) => {
 	console.log(`[${msg.author.id === client.user.id ? 'You' : msg.author.username}]: ${msg.content}`)
 })
 
-while (client.readyAt) {
-	const rl = readline.createInterface({ input, output })
-	const content = await rl.question('[You]: ')
-	moveCursor(output, 0, -1)
-	clearScreenDown(output)
-	rl.close()
-	await channel.send(content)
-}
+rl.on('line', async (line) => {
+	await channel.send(line)
+})
+
+rl.prompt()
