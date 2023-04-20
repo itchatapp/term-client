@@ -2,7 +2,8 @@
 
 import { Client } from '@zaunapp/client'
 import prompts from 'prompts'
-import * as readline from 'node:readline/promises'
+import readline from 'node:readline/promises'
+import { moveCursor, clearScreenDown } from 'node:readline'
 import { stdin as input, stdout as output } from 'node:process'
 
 const env = process.env
@@ -55,6 +56,8 @@ client.on('messageCreate', (msg) => {
 while (client.readyAt) {
 	const rl = readline.createInterface({ input, output })
 	const content = await rl.question('[You]: ')
-	await channel.send(content)
+	moveCursor(output, 0, -1)
+	clearScreenDown(output)
 	rl.close()
+	await channel.send(content)
 }
