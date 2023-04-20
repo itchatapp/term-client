@@ -3,6 +3,7 @@ import prompts from 'prompts'
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
+
 const env = process.env
 const exitOnCancel = (state) => {
 	if (state.aborted) process.nextTick(() => process.exit(0))
