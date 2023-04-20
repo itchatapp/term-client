@@ -27,5 +27,9 @@
   },
   "devDependencies": {
     "prettier": "^2.8.7"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
   }
 }
