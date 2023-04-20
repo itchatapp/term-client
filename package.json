@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "format": "prettier src --write"
+    "format": "prettier src --write",
+    "build": "echo 'built'"
   },
   "bin": {
     "zaun": "src/index.js"
